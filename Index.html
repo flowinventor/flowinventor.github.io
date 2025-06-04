@@ -1,109 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreshMark – Smart Reusable Food Label</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f0f7f4;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: #34a853;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        section {
-            padding: 40px 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-        h1, h2 {
-            color: #2c6e49;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #34a853;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        footer {
-            background: #2c6e49;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            font-size: 0.9em;
-        }
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-        .feature {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            width: 200px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FreshMark – Smart Reusable Food Label</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #2ecc71;
+      --dark-green: #27ae60;
+      --bg: #f9f9f9;
+      --text: #333;
+      --accent: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--green);
+      color: white;
+      padding: 80px 20px 100px;
+      text-align: center;
+      animation: fadeInDown 1.2s ease-out;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      background-color: white;
+      color: var(--green);
+      padding: 12px 25px;
+      font-weight: 600;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #e8f9f0;
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .hero-img {
+      max-width: 600px;
+      display: block;
+      margin: 30px auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1.5s ease forwards;
+      animation-delay: 0.6s;
+    }
+
+    h2 {
+      color: var(--dark-green);
+      margin-bottom: 20px;
+      text-align: center;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+      opacity: 0;
+      animation: fadeIn 1.6s ease forwards;
+      animation-delay: 0.4s;
+    }
+
+    .feature {
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-align: center;
+      transform: scale(0.96);
+      transition: 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: scale(1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature h3 {
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      font-size: 0.95rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.8s;
+    }
+
+    input[type="email"] {
+      padding: 12px;
+      width: 280px;
+      max-width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: var(--dark-green);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
+  <header>
     <h1>FreshMark</h1>
-    <p>The Smart, Reusable Food Label That Keeps Your Kitchen Fresh</p>
-    <a href="#contact" class="button">Get Updates</a>
-</header>
+    <p>The Smart, Reusable Food Label That Helps You Stop Wasting Food</p>
+    <a href="#contact" class="btn">Get Notified</a>
+  </header>
 
-<section>
-    <h2>Why FreshMark?</h2>
-    <p>Stop wasting food and take control of your fridge! FreshMark is a reusable digital tag that helps you track what’s inside your containers, when it was stored, and when it’s time to use it — all with a sleek e-ink display and optional phone alerts.</p>
-</section>
+  <section class="section">
+    <h2>How It Works</h2>
+    <img class="hero-img" src="https://via.placeholder.com/600x400?text=Smart+Food+Label+Mockup" alt="FreshMark Product Mockup">
+    <p style="text-align:center; margin-top:20px;">FreshMark is a small, digital label that attaches to any food container. It shows what’s inside, when it was stored, and when to use it — all on a clear e-ink display. No more forgotten leftovers or messy marker labels!</p>
+  </section>
 
-<section>
+  <section class="section" style="background-color:#eefef3;">
     <h2>Features</h2>
     <div class="features">
-        <div class="feature">
-            <h3>Reusable</h3>
-            <p>Attach to any container with magnetic or silicone straps. Dishwasher-safe and waterproof.</p>
-        </div>
-        <div class="feature">
-            <h3>Smart Display</h3>
-            <p>Low-energy e-ink shows dates and food names clearly, even in the fridge.</p>
-        </div>
-        <div class="feature">
-            <h3>Stay Notified</h3>
-            <p>Optional app sync to get reminders when food is nearing expiration.</p>
-        </div>
-        <div class="feature">
-            <h3>Eco-Friendly</h3>
-            <p>Reduce waste, save money, and help the planet by cutting down on spoiled food.</p>
-        </div>
+      <div class="feature">
+        <h3>Reusable</h3>
+        <p>Stick or strap it onto any container. It’s waterproof and dishwasher-safe.</p>
+      </div>
+      <div class="feature">
+        <h3>Smart Display</h3>
+        <p>E-ink display shows food name, storage date, and expiration clearly.</p>
+      </div>
+      <div class="feature">
+        <h3>App Sync</h3>
+        <p>Use the companion app to track reminders and get freshness alerts.</p>
+      </div>
+      <div class="feature">
+        <h3>Eco-Friendly</h3>
+        <p>Helps reduce food waste and cuts down on disposable plastic stickers.</p>
+      </div>
     </div>
-</section>
+  </section>
 
-<section id="contact">
-    <h2>Stay in the Loop</h2>
-    <p>Want to be the first to know when FreshMark launches? Enter your email below:</p>
-    <form>
-        <input type="email" placeholder="Your email" required style="padding:10px; width:250px; max-width:80%;">
-        <button type="submit" class="button">Notify Me</button>
+  <section class="section" id="contact">
+    <h2>Join the Early Access List</h2>
+    <p style="text-align:center;">Want to be notified when FreshMark launches? Enter your email below.</p>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="email" name="email" placeholder="Your email address" required />
+      <button type="submit" class="btn">Notify Me</button>
     </form>
-</section>
+  </section>
 
-<footer>
-    &copy; 2025 FreshMark | Designed with ❤️ for smarter kitchens
-</footer>
+  <footer>
+    &copy; 2025 FreshMark – Designed for fresher kitchens
+  </footer>
 
 </body>
 </html>
